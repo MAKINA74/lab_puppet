@@ -24,9 +24,13 @@ exec {
     cwd     => '/usr/src',
     command => 'tar -xavf dokuwiki.tgz';
   
-    'renommer le fichier':
-    path    => ['/usr/bin'],
-    cwd     => '/usr/src',
-    command => 'mv dokuwiki-* dokuwiki';
 
+}
+
+
+file {
+  'rename-dokuwiki':
+    ensure => 'present',
+    source => '/usr/src/dokuwiki-2020-07-29',
+    path   => '/usr/src/dokuwiki';
 }
